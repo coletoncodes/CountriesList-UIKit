@@ -30,7 +30,7 @@ class CountryTableViewCell: UITableViewCell {
     private func setupUI() {
         // Configure stack view
         verticalStackView.axis = .vertical
-        verticalStackView.distribution = .fillEqually
+        verticalStackView.distribution = .equalSpacing
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(verticalStackView)
         
@@ -64,9 +64,9 @@ class CountryTableViewCell: UITableViewCell {
     
     // MARK: - Configuration
     func configureWith(country: Country) {
-        nameLabel.text = country.name
-        regionLabel.text = country.region
-        capitalLabel.text = country.capital
-        zipCodeLabel.text = country.code
+        nameLabel.text = "Name: " + country.name
+        regionLabel.text = "Region: " + country.region
+        capitalLabel.text = "Capital: " + country.capital
+        zipCodeLabel.text = "Code: " + country.code
     }
 }

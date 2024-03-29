@@ -19,7 +19,7 @@ final class CountriesLocalRepo: CountriesLocalStore {
     
     // MARK: - Interface
     var countries: [CountryDTO] {
-        if let persistedCountries = countriesUDStore.value {
+        if let persistedCountries = countriesUDStore.getValue(forType: [CountryDTO].self) {
             return persistedCountries
         }
         return []

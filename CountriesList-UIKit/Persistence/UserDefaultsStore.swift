@@ -8,7 +8,12 @@
 import Factory
 import Foundation
 
-class UserDefaultsStore<E: Codable> {
+protocol UserDefaultsStoreProtocol {
+    func set<Value: Codable>(value: Value) throws
+    func getValue<Object: Codable>(forType type: Object.Type) -> Object?
+}
+
+class UserDefaultsStore: UserDefaultsStoreProtocol {
     // MARK: - Dependencies
     @Injected(\.userDefaultsProtocol) private var userDefaults
     private let key: String
@@ -32,7 +37,7 @@ class UserDefaultsStore<E: Codable> {
     }()
     
     // MARK: - Interface
-    func set(value: E) throws {
+    func set<Value: Codable>(value: Value) throws {
         do {
             let encodedData = try encoder.encode(value)
             userDefaults.setValue(encodedData, forKey: key)
@@ -42,15 +47,15 @@ class UserDefaultsStore<E: Codable> {
         }
     }
     
-    var value: E? {
+    func getValue<Object: Codable>(forType type: Object.Type) -> Object? {
         do {
             guard let data = userDefaults.data(forKey: key) else {
                 print("No data for key: \(key) found")
                 throw UserDefaultsStoreError.noValuePersisted
             }
-            return try decoder.decode(E.self, from: data)
+            return try decoder.decode(Object.self, from: data)
         } catch {
-            print("Failed to decode object of type: \(String(describing: E.self)) with error: \(error)")
+            print("Failed to decode object of type: \(String(describing: Object.self)) with error: \(error)")
             return nil
         }
     }

@@ -34,8 +34,8 @@ extension Container {
             .cached
     }
     
-    var countriesUserDefaultsStore: Factory<UserDefaultsStore<[CountryDTO]>> {
-        self { UserDefaultsStore(key: .countries) }
+    var countriesUserDefaultsStore: Factory<UserDefaultsStoreProtocol> {
+        self { UserDefaultsStore(key: .countries) as UserDefaultsStoreProtocol }
             .cached
     }
 }

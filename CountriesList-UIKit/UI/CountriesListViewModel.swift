@@ -26,6 +26,7 @@ final class CountriesListViewModel: ObservableObject {
     // MARK: - Interface
     func fetchCountries() {
         Task {
+            self.isFetchingCountries = true
             do {
                 try await countriesInteracting.fetchCountries()
                 self.allCountries = countriesInteracting.countries
@@ -34,6 +35,7 @@ final class CountriesListViewModel: ObservableObject {
                 print("Failed to fetch countries with error: \(error)")
                 self.errorMessage = String(describing: error)
             }
+            self.isFetchingCountries = false
             return
         }
     }

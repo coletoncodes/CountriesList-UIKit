@@ -5,6 +5,7 @@
 //  Created by Coleton Gorecke on 3/26/24.
 //
 
+import Factory
 import Foundation
 
 protocol CountriesInteracting {
@@ -14,16 +15,8 @@ protocol CountriesInteracting {
 
 final class CountriesInteractor: CountriesInteracting {
     // MARK: - Dependencies
-    private let localStore: CountriesLocalStore
-    private let countriesRequester: CountriesRequesting
-    
-    init(
-        localStore: CountriesLocalStore = CountriesLocalRepo(),
-        countriesRequester: CountriesRequesting = CountriesRequestor()
-    ) {
-        self.localStore = localStore
-        self.countriesRequester = countriesRequester
-    }
+    @Injected(\.countriesLocalStore) private var localStore
+    @Injected(\.countriesRequesting) private var countriesRequesting
     
     // MARK: - Interface
     var countries: [Country] {
@@ -32,7 +25,7 @@ final class CountriesInteractor: CountriesInteracting {
     
     func fetchCountries() async throws {
         do {
-            let countries = try await countriesRequester.fetchCountries()
+            let countries = try await countriesRequesting.fetchCountries()
             localStore.save(countries: countries)
         } catch {
             print("Failed to fetch countries with error: \(error)")

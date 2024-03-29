@@ -5,16 +5,13 @@
 //  Created by Coleton Gorecke on 3/26/24.
 //
 
+import Factory
 import Foundation
 
 @MainActor
 final class CountriesListViewModel: ObservableObject {
     // MARK: - Dependencies
-    private let countriesInteracting: CountriesInteracting
-    
-    init(countriesInteracting: CountriesInteracting = CountriesInteractor()) {
-        self.countriesInteracting = countriesInteracting
-    }
+    @Injected(\.countriesInteracting) private var countriesInteracting
     
     // MARK: - Published Properties
     @Published var filteredCountries: [Country] = []
@@ -22,6 +19,8 @@ final class CountriesListViewModel: ObservableObject {
     @Published var errorMessage: String?
     
     private var allCountries: [Country] = []
+    
+    nonisolated init() {}
     
     // MARK: - Interface
     func fetchCountries() {

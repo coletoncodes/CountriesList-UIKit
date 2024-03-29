@@ -29,6 +29,7 @@
 		9431F2972BB6FD90002070B2 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2962BB6FD90002070B2 /* RootNavigationController.swift */; };
 		9431F29A2BB70463002070B2 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 9431F2992BB70463002070B2 /* Factory */; };
 		9431F29D2BB70476002070B2 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F29C2BB70476002070B2 /* Container.swift */; };
+		9431F29F2BB706C6002070B2 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F29E2BB706C6002070B2 /* UserDefaultsProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		9431F2942BB5FCF1002070B2 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		9431F2962BB6FD90002070B2 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		9431F29C2BB70476002070B2 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		9431F29E2BB706C6002070B2 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			children = (
 				9431F27B2BB5FA1F002070B2 /* CountriesLocalStore.swift */,
 				9431F27C2BB5FA1F002070B2 /* UserDefaultsStore.swift */,
+				9431F29E2BB706C6002070B2 /* UserDefaultsProtocol.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				9431F2912BB5FA1F002070B2 /* CountriesListViewController.swift in Sources */,
 				9431F2972BB6FD90002070B2 /* RootNavigationController.swift in Sources */,
 				9431F2842BB5FA1F002070B2 /* CountriesRequesting.swift in Sources */,
+				9431F29F2BB706C6002070B2 /* UserDefaultsProtocol.swift in Sources */,
 				9431F2902BB5FA1F002070B2 /* CountriesListViewModel.swift in Sources */,
 				9431F2892BB5FA1F002070B2 /* APIRequest.swift in Sources */,
 				9431F28A2BB5FA1F002070B2 /* CountryDTO.swift in Sources */,

@@ -5,19 +5,17 @@
 //  Created by Coleton Gorecke on 3/26/24.
 //
 
+import Factory
 import Foundation
 
 class UserDefaultsStore<E: Codable> {
+    // MARK: - Dependencies
+    @Injected(\.userDefaultsProtocol) private var userDefaults
     private let key: String
-    private let userDefaults: UserDefaults
     
     // MARK: - Initializer
-    init(
-        key: String,
-        userDefaults: UserDefaults = UserDefaults.standard
-    ) {
-        self.key = key
-        self.userDefaults = userDefaults
+    init(key: UserDefaultsKeys) {
+        self.key = key.rawValue
     }
     
     // MARK: - Private Properties

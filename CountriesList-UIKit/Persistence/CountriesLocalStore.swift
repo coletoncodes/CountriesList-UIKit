@@ -5,6 +5,7 @@
 //  Created by Coleton Gorecke on 3/26/24.
 //
 
+import Factory
 import Foundation
 
 protocol CountriesLocalStore {
@@ -13,20 +14,12 @@ protocol CountriesLocalStore {
 }
 
 final class CountriesLocalRepo: CountriesLocalStore {
-    private let countriesRequesting: CountriesRequesting
-    private let userDefaultsStore: UserDefaultsStore<[CountryDTO]>
-    
-    init(
-        countriesRequesting: CountriesRequesting = CountriesRequestor(),
-        userDefaultsStore: UserDefaultsStore<[CountryDTO]> = UserDefaultsStore<[CountryDTO]>.init(key: "Countries")
-    ) {
-        self.countriesRequesting = countriesRequesting
-        self.userDefaultsStore = userDefaultsStore
-    }
+    // MARK: - Dependencies
+    @Injected(\.countriesUserDefaultsStore) private var countriesUDStore
     
     // MARK: - Interface
     var countries: [CountryDTO] {
-        if let persistedCountries = userDefaultsStore.value {
+        if let persistedCountries = countriesUDStore.value {
             return persistedCountries
         }
         return []
@@ -34,7 +27,7 @@ final class CountriesLocalRepo: CountriesLocalStore {
     
     func save(countries: [CountryDTO]) {
         do {
-            try userDefaultsStore.set(value: countries)
+            try countriesUDStore.set(value: countries)
         } catch {
             print("Failed to save countries with error: \(error)")
         }

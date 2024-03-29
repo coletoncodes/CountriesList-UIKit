@@ -14,6 +14,7 @@ class CountriesListViewController: UIViewController {
 
     // MARK: - Properties
     private var tableView: UITableView!
+    private var searchController: UISearchController!
     private var cancellables = Set<AnyCancellable>()
     
     private let tableViewCellIdentifier = "CountryTableViewCell"
@@ -27,7 +28,17 @@ class CountriesListViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        setupSearchController()
         setupBindings()
+    }
+    
+    private func setupSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Countries"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     // Setup TableView
@@ -41,13 +52,12 @@ class CountriesListViewController: UIViewController {
 
     // Setup bindings to ViewModel
     private func setupBindings() {
-        // Assuming viewModel has a way to notify when data changes, e.g., using a closure or a delegate pattern.
-        viewModel.$countries
-            .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.tableView.reloadData()
-            }
-            .store(in: &cancellables)
+        viewModel.$filteredCountries
+                .receive(on: RunLoop.main)
+                .sink { [weak self] _ in
+                    self?.tableView.reloadData()
+                }
+                .store(in: &cancellables)
     }
 }
 
@@ -55,7 +65,7 @@ class CountriesListViewController: UIViewController {
 extension CountriesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of countries
-        return viewModel.countries.count
+        return viewModel.filteredCountries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,7 +73,7 @@ extension CountriesListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let country = viewModel.countries[indexPath.row]
+        let country = viewModel.filteredCountries[indexPath.row]
         cell.configureWith(country: country)
         
         return cell
@@ -72,3 +82,16 @@ extension CountriesListViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension CountriesListViewController: UITableViewDelegate {}
+
+// MARK: - UISearchResultsUpdating
+extension CountriesListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        // Assuming you have a method in your ViewModel to filter countries
+        // You could pass the search text to that method
+        guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {
+            viewModel.resetFilteredCountries() // Reset or show all countries if no search text
+            return
+        }
+        viewModel.filterCountries(for: searchText)
+    }
+}

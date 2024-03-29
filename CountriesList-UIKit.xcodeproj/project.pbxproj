@@ -26,6 +26,7 @@
 		9431F2902BB5FA1F002070B2 /* CountriesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2822BB5FA1F002070B2 /* CountriesListViewModel.swift */; };
 		9431F2912BB5FA1F002070B2 /* CountriesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2832BB5FA1F002070B2 /* CountriesListViewController.swift */; };
 		9431F2952BB5FCF1002070B2 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2942BB5FCF1002070B2 /* CountryTableViewCell.swift */; };
+		9431F2972BB6FD90002070B2 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2962BB6FD90002070B2 /* RootNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		9431F2822BB5FA1F002070B2 /* CountriesListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesListViewModel.swift; sourceTree = "<group>"; };
 		9431F2832BB5FA1F002070B2 /* CountriesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesListViewController.swift; sourceTree = "<group>"; };
 		9431F2942BB5FCF1002070B2 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		9431F2962BB6FD90002070B2 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				9431F2822BB5FA1F002070B2 /* CountriesListViewModel.swift */,
 				9431F2832BB5FA1F002070B2 /* CountriesListViewController.swift */,
 				9431F2942BB5FCF1002070B2 /* CountryTableViewCell.swift */,
+				9431F2962BB6FD90002070B2 /* RootNavigationController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				9431F2852BB5FA1F002070B2 /* APIError.swift in Sources */,
 				9431F2882BB5FA1F002070B2 /* NetworkRequesting.swift in Sources */,
 				9431F2912BB5FA1F002070B2 /* CountriesListViewController.swift in Sources */,
+				9431F2972BB6FD90002070B2 /* RootNavigationController.swift in Sources */,
 				9431F2842BB5FA1F002070B2 /* CountriesRequesting.swift in Sources */,
 				9431F2902BB5FA1F002070B2 /* CountriesListViewModel.swift in Sources */,
 				9431F2892BB5FA1F002070B2 /* APIRequest.swift in Sources */,

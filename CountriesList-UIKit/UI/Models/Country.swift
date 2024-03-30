@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Country: Identifiable {
+struct Country: Identifiable, Equatable {
     let id: UUID = UUID()
     let name: String
     let region: String

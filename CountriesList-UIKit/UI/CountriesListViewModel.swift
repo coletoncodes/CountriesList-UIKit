@@ -35,7 +35,6 @@ final class CountriesListViewModel: ObservableObject {
                 self.errorMessage = String(describing: error)
             }
             self.isFetchingCountries = false
-            return
         }
     }
     

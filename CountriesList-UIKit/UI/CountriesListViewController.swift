@@ -6,17 +6,19 @@
 //
 
 import Combine
+import Factory
 import UIKit
 
 class CountriesListViewController: UIViewController {
     // MARK: - Dependencies
-    private let viewModel = CountriesListViewModel()
+    @Injected(\.countriesListViewModel) private var viewModel
     
     // MARK: - Properties
     private var tableView: UITableView!
     private var searchController: UISearchController!
     private var errorMessageLabel: UILabel!
     private var loadingSpinner: UIActivityIndicatorView!
+    private var noCountriesLabel: UILabel!
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -29,10 +31,12 @@ class CountriesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         
         setupTableView()
         setupSearchController()
         setupErrorMessageLabel()
+        setupEmptyContentLabel()
         setupActivityIndicator()
         setupBindings()
     }
@@ -50,6 +54,23 @@ class CountriesListViewController: UIViewController {
             errorMessageLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             errorMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             errorMessageLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+    }
+    
+    private func setupEmptyContentLabel() {
+        noCountriesLabel = UILabel()
+        noCountriesLabel.isHidden = true // hidden by default
+        noCountriesLabel.translatesAutoresizingMaskIntoConstraints = false
+        noCountriesLabel.textColor = .black
+        noCountriesLabel.textAlignment = .center
+        noCountriesLabel.numberOfLines = 0 // Allows for multiple lines
+        view.addSubview(noCountriesLabel)
+        
+        NSLayoutConstraint.activate([
+            noCountriesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noCountriesLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            noCountriesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            noCountriesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
     
@@ -88,34 +109,48 @@ class CountriesListViewController: UIViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in
                 self?.tableView.reloadData()
-                self?.tableView.isHidden = self?.viewModel.filteredCountries.isEmpty ?? true && self?.viewModel.errorMessage == nil
+                self?.updateContentVisibility()
             }
             .store(in: &cancellables)
         
         viewModel.$errorMessage
             .receive(on: RunLoop.main)
-            .sink { [weak self] errorMessage in
-                self?.errorMessageLabel.isHidden = errorMessage == nil
-                if let message = errorMessage, !message.isEmpty {
-                    self?.errorMessageLabel.text = message
-                    self?.tableView.isHidden = true
-                } else {
-                    self?.errorMessageLabel.text = ""
-                }
+            .sink { [weak self] _ in
+                self?.updateContentVisibility()
             }
             .store(in: &cancellables)
         
         viewModel.$isFetchingCountries
             .receive(on: RunLoop.main)
-            .sink { [weak self] isFetching in
-                if isFetching {
-                    self?.loadingSpinner.startAnimating()
-                    self?.tableView.isHidden = true // hide tableView while loading
-                } else {
-                    self?.loadingSpinner.stopAnimating()
-                }
+            .sink { [weak self] _ in
+                self?.updateContentVisibility()
             }
             .store(in: &cancellables)
+    }
+
+    private func updateContentVisibility() {
+        let isLoading = viewModel.isFetchingCountries
+        let hasError = viewModel.errorMessage != nil
+        let isEmpty = viewModel.filteredCountries.isEmpty && !isLoading && !hasError
+        
+        tableView.isHidden = isLoading || hasError || isEmpty
+        loadingSpinner.isHidden = !isLoading
+        errorMessageLabel.isHidden = !hasError
+        noCountriesLabel.isHidden = !isEmpty
+        
+        if isLoading {
+            loadingSpinner.startAnimating()
+        } else {
+            loadingSpinner.stopAnimating()
+        }
+        
+        if hasError, let errorMessage = viewModel.errorMessage {
+            errorMessageLabel.text = errorMessage
+        }
+        
+        if isEmpty {
+            noCountriesLabel.text = "No Countries that match the search query."
+        }
     }
 }
 

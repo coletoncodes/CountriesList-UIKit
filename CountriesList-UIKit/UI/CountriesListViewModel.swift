@@ -18,7 +18,7 @@ final class CountriesListViewModel: ObservableObject {
     @Published var isFetchingCountries: Bool = false
     @Published var errorMessage: String?
     
-    private var allCountries: [Country] = []
+    private(set) var allCountries: [Country] = []
     
     nonisolated init() {}
     
@@ -27,9 +27,8 @@ final class CountriesListViewModel: ObservableObject {
         Task {
             self.isFetchingCountries = true
             do {
-                try await countriesInteracting.fetchCountries()
-                self.allCountries = countriesInteracting.countries
-                self.filteredCountries = allCountries
+                self.allCountries = try await countriesInteracting.fetchCountries()
+                resetFilteredCountries()
             } catch {
                 print("Failed to fetch countries with error: \(error)")
                 self.errorMessage = String(describing: error)

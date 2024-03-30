@@ -35,15 +35,9 @@ final class MockCountriesRequesting: CountriesRequesting {
 }
 
 final class MockCountriesInteracting: CountriesInteracting {
-    var countriesGetterStub: (() -> [Country])!
+    var fetchCountriesStub: (() async throws -> [Country])!
     
-    var countries: [Country] {
-        countriesGetterStub()
-    }
-    
-    var fetchCountriesStub: (() async throws -> Void)!
-    
-    func fetchCountries() async throws {
+    func fetchCountries() async throws -> [Country] {
         try await fetchCountriesStub()
     }
 }

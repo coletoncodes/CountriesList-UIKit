@@ -16,6 +16,7 @@ protocol UserDefaultsStoreProtocol {
 class UserDefaultsStore: UserDefaultsStoreProtocol {
     // MARK: - Dependencies
     @Injected(\.userDefaultsProtocol) private var userDefaults
+    
     private let key: String
     
     // MARK: - Initializer
@@ -23,17 +24,12 @@ class UserDefaultsStore: UserDefaultsStoreProtocol {
         self.key = key.rawValue
     }
     
-    // MARK: - Private Properties
-    private lazy var decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        // add strategies if needed
-        return decoder
+    open lazy var encoder: JSONEncoder = {
+        return JSONEncoder()
     }()
     
-    private lazy var encoder: JSONEncoder = {
-        let encoder = JSONEncoder()
-        // add strategies if needed
-        return encoder
+    open lazy var decoder: JSONDecoder = {
+        return JSONDecoder()
     }()
     
     // MARK: - Interface
@@ -64,5 +60,4 @@ class UserDefaultsStore: UserDefaultsStoreProtocol {
 enum UserDefaultsStoreError: Error {
     case noValuePersisted
     case encodingError
-    case decodingError
 }

@@ -8,6 +8,10 @@
 @testable import CountriesList_UIKit
 import Foundation
 
+enum MockError: Error {
+    case expected
+}
+
 final class MockCountriesLocalStore: CountriesLocalStore {
     var countriesGetterStub: (() -> [CountryDTO])!
     
@@ -58,16 +62,16 @@ final class MockUserDefaultsProtocol: UserDefaultsProtocol {
     }
 }
 
-final class CountriesUserDefaultsStore: UserDefaultsStoreProtocol {
+final class MockCountriesUserDefaultsStore: UserDefaultsStoreProtocol {
     var setStub: ((Codable) throws -> Void)!
     
-    func set(value: Codable) throws {
+    func set<Value: Codable>(value: Value) throws {
         try setStub(value)
     }
     
-    var valueGetterStub: (() -> Codable?)!
+    var getValueStub: ((Any) -> Any?)!
     
-    var value: Codable? {
-        valueGetterStub()
+    func getValue<Object: Codable>(forType type: Object.Type) -> Object? {
+        getValueStub(type) as? Object
     }
 }

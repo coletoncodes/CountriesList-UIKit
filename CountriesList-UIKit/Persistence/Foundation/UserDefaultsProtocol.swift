@@ -9,6 +9,7 @@ import Foundation
 
 enum UserDefaultsKeys: String {
     case countries
+    case mock
 }
 
 protocol UserDefaultsProtocol {

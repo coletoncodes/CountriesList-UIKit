@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "8876446A-8735-49E5-B9D2-0618A2751583",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:CountriesList-UIKit.xcodeproj",
+      "identifier" : "9431F24B2BB5F984002070B2",
+      "name" : "CountriesList-UIKit"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:CountriesList-UIKit.xcodeproj",
+        "identifier" : "9431F2A32BB70730002070B2",
+        "name" : "CountriesListUnitTests"
+      }
+    }
+  ],
+  "version" : 1
+}

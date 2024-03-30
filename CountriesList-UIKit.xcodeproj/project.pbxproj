@@ -37,6 +37,7 @@
 		9431F2BE2BB79035002070B2 /* APIConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2BD2BB79035002070B2 /* APIConstantsTests.swift */; };
 		9431F2C02BB79086002070B2 /* CountriesRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2BF2BB79086002070B2 /* CountriesRequestTests.swift */; };
 		9431F2C22BB790D4002070B2 /* CountryDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2C12BB790D4002070B2 /* CountryDTOTests.swift */; };
+		9431F2C42BB79204002070B2 /* APIHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2C32BB79204002070B2 /* APIHeaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		9431F2BD2BB79035002070B2 /* APIConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstantsTests.swift; sourceTree = "<group>"; };
 		9431F2BF2BB79086002070B2 /* CountriesRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesRequestTests.swift; sourceTree = "<group>"; };
 		9431F2C12BB790D4002070B2 /* CountryDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDTOTests.swift; sourceTree = "<group>"; };
+		9431F2C32BB79204002070B2 /* APIHeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 				9431F2BD2BB79035002070B2 /* APIConstantsTests.swift */,
 				9431F2BF2BB79086002070B2 /* CountriesRequestTests.swift */,
 				9431F2C12BB790D4002070B2 /* CountryDTOTests.swift */,
+				9431F2C32BB79204002070B2 /* APIHeaderTests.swift */,
 			);
 			path = CountriesListUnitTests;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				9431F2BB2BB78E68002070B2 /* CountriesLocalRepoTests.swift in Sources */,
 				9431F2AE2BB70748002070B2 /* MockInjectingTestCase.swift in Sources */,
 				9431F2B12BB70774002070B2 /* Mocks.swift in Sources */,
+				9431F2C42BB79204002070B2 /* APIHeaderTests.swift in Sources */,
 				9431F2B32BB70E1F002070B2 /* UserDefaultsStoreTests.swift in Sources */,
 				9431F2BE2BB79035002070B2 /* APIConstantsTests.swift in Sources */,
 			);

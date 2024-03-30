@@ -144,8 +144,6 @@ extension CountriesListViewController: UITableViewDelegate {}
 // MARK: - UISearchResultsUpdating
 extension CountriesListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        // Assuming you have a method in your ViewModel to filter countries
-        // You could pass the search text to that method
         guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {
             viewModel.resetFilteredCountries() // Reset or show all countries if no search text
             return

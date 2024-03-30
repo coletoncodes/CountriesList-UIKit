@@ -33,6 +33,7 @@
 		9431F2AE2BB70748002070B2 /* MockInjectingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2AD2BB70748002070B2 /* MockInjectingTestCase.swift */; };
 		9431F2B12BB70774002070B2 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2B02BB70774002070B2 /* Mocks.swift */; };
 		9431F2B32BB70E1F002070B2 /* UserDefaultsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2B22BB70E1F002070B2 /* UserDefaultsStoreTests.swift */; };
+		9431F2BB2BB78E68002070B2 /* CountriesLocalRepoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2BA2BB78E68002070B2 /* CountriesLocalRepoTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		9431F2B02BB70774002070B2 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		9431F2B22BB70E1F002070B2 /* UserDefaultsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStoreTests.swift; sourceTree = "<group>"; };
 		9431F2B92BB78243002070B2 /* UnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTests.xctestplan; sourceTree = "<group>"; };
+		9431F2BA2BB78E68002070B2 /* CountriesLocalRepoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesLocalRepoTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 			children = (
 				9431F2AF2BB7076B002070B2 /* Mocks */,
 				9431F2B22BB70E1F002070B2 /* UserDefaultsStoreTests.swift */,
+				9431F2BA2BB78E68002070B2 /* CountriesLocalRepoTests.swift */,
 			);
 			path = CountriesListUnitTests;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9431F2BB2BB78E68002070B2 /* CountriesLocalRepoTests.swift in Sources */,
 				9431F2AE2BB70748002070B2 /* MockInjectingTestCase.swift in Sources */,
 				9431F2B12BB70774002070B2 /* Mocks.swift in Sources */,
 				9431F2B32BB70E1F002070B2 /* UserDefaultsStoreTests.swift in Sources */,

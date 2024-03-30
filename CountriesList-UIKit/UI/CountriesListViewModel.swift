@@ -40,12 +40,21 @@ final class CountriesListViewModel: ObservableObject {
     /// Filter countries based on searchText
     func filterCountries(for searchText: String) {
         filteredCountries = allCountries.filter { country in
-            country.name.contains(searchText) || country.capital.contains(searchText) ||
-            country.region.contains(searchText) || country.code.contains(searchText)
+            country.name.containsLowerCaseText(searchText) ||
+            country.capital.containsLowerCaseText(searchText) ||
+            country.region.containsLowerCaseText(searchText) ||
+            country.code.containsLowerCaseText(searchText)
         }
     }
     
     func resetFilteredCountries() {
         filteredCountries = allCountries
+    }
+}
+
+fileprivate extension String {
+    func containsLowerCaseText(_ stringValue: String) -> Bool {
+        let lowerCasedText = stringValue.lowercased()
+        return self.lowercased().contains(lowerCasedText)
     }
 }

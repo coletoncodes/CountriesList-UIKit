@@ -39,6 +39,7 @@
 		9431F2C22BB790D4002070B2 /* CountryDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2C12BB790D4002070B2 /* CountryDTOTests.swift */; };
 		9431F2C42BB79204002070B2 /* APIHeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2C32BB79204002070B2 /* APIHeaderTests.swift */; };
 		9431F2C82BB7944C002070B2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9431F2C72BB7944C002070B2 /* README.md */; };
+		9431F2CA2BB87374002070B2 /* CountriesListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9431F2C92BB87374002070B2 /* CountriesListViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		9431F2C12BB790D4002070B2 /* CountryDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDTOTests.swift; sourceTree = "<group>"; };
 		9431F2C32BB79204002070B2 /* APIHeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHeaderTests.swift; sourceTree = "<group>"; };
 		9431F2C72BB7944C002070B2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9431F2C92BB87374002070B2 /* CountriesListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesListViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 				9431F2BF2BB79086002070B2 /* CountriesRequestTests.swift */,
 				9431F2C12BB790D4002070B2 /* CountryDTOTests.swift */,
 				9431F2C32BB79204002070B2 /* APIHeaderTests.swift */,
+				9431F2C92BB87374002070B2 /* CountriesListViewModelTests.swift */,
 			);
 			path = CountriesListUnitTests;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				9431F2AE2BB70748002070B2 /* MockInjectingTestCase.swift in Sources */,
 				9431F2B12BB70774002070B2 /* Mocks.swift in Sources */,
 				9431F2C42BB79204002070B2 /* APIHeaderTests.swift in Sources */,
+				9431F2CA2BB87374002070B2 /* CountriesListViewModelTests.swift in Sources */,
 				9431F2B32BB70E1F002070B2 /* UserDefaultsStoreTests.swift in Sources */,
 				9431F2BE2BB79035002070B2 /* APIConstantsTests.swift in Sources */,
 			);

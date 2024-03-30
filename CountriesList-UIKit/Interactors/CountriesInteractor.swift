@@ -9,8 +9,7 @@ import Factory
 import Foundation
 
 protocol CountriesInteracting {
-    var countries: [Country] { get }
-    func fetchCountries() async throws
+    func fetchCountries() async throws -> [Country]
 }
 
 final class CountriesInteractor: CountriesInteracting {
@@ -19,14 +18,11 @@ final class CountriesInteractor: CountriesInteracting {
     @Injected(\.countriesRequesting) private var countriesRequesting
     
     // MARK: - Interface
-    var countries: [Country] {
-        localStore.countries.map(\.asCountry)
-    }
-    
-    func fetchCountries() async throws {
+    func fetchCountries() async throws -> [Country] {
         do {
             let countries = try await countriesRequesting.fetchCountries()
             localStore.save(countries: countries)
+            return localStore.countries.map(\.asCountry)
         } catch {
             print("Failed to fetch countries with error: \(error)")
             throw error
